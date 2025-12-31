@@ -1,0 +1,19 @@
+Sigmoid Function - some graph that looks like an S between 0 and 1  y = 1/ (1+e^-z)   looks like an S passing through y=0.5
+
+we need to start with weights and biases
+
+Weights - the parts of each line in a neural network that change the input for the next line
+        these are adjusted in the training process so that the network's output is the same as the target output
+
+Bias - an increase in the y-axis so that the graph doesn't need to start at the origin all the time, making for some more non linear graphs like sin and cos
+
+Gradient descent - an algorithm that changes the weights so outputs are what we want
+    it requies the entire dataset though and averages the gradient of the cost function after using the entire dataset
+
+Stochastic Gradient Descent - same as normal Gradient Descent but instead of needing the entire dataset, every time the cost function is 
+                              calculated, the parameters (weight and bias) change iteravely every time we get a new cost
+
+    For GD it's way more accurate since it uses the entire dataset whereas 
+    SGD may not be as accurate since its changes are instead done after each cost func is calculated
+
+
