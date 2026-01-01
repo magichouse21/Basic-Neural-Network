@@ -1,5 +1,3 @@
-Sigmoid Function - some graph that looks like an S between 0 and 1  y = 1/ (1+e^-z)   looks like an S passing through y=0.5
-
 we need to start with weights and biases
 
 Weights - the parts of each line in a neural network that change the input for the next line
@@ -16,4 +14,10 @@ Stochastic Gradient Descent - same as normal Gradient Descent but instead of nee
     For GD it's way more accurate since it uses the entire dataset whereas 
     SGD may not be as accurate since its changes are instead done after each cost func is calculated
 
+Activation Functions
 
+    Sigmoid Function - some graph that looks like an S between 0 and 1  y = 1/ (1+e^-z)   looks like an S passing through y=0.5
+
+    ReLU (Rectified Linear Unit) - sigmoid(z) = max (0,z)
+
+    Tanh (hyperbolic tangent) - sigmoid(z) = smthn fierce
