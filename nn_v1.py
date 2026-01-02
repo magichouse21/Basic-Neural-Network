@@ -39,9 +39,8 @@ def forward_prop(X, params):  #inputs the weights and biases in parameters, X is
     
     return A, caches
 
-
-        
-
-
-
-
+def cost_function(A, Y): #Y - values from previous layers of network
+    m = Y.shape()[1]
+    cost = -(1/m)*[np.dot(Y.T, np.log(A)) + np.dot((1 - Y.T), np.log(1 - A))]
+    
+    return cost
