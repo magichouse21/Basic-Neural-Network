@@ -42,7 +42,7 @@ def forward_prop(X, params):  #inputs the weights and biases in parameters, X is
 def cost_function(A, Y): #Y - values from previous layers of network
     m = Y.shape()[1]
     cost = -(1/m)*[np.dot(Y.T, np.log(A)) + np.dot((1 - Y.T), np.log(1 - A))] #Y.T is Y transposed
-    #using Binary Cross-Entropy Loss / Log Loss cuz it's better than MSE ig?
+    #using Binary Cross-Entropy Loss / Log Loss cuz it's better than MSE (Mean sqaured error whose equation is (output - actual)^2)
     return cost  #the lower the better the model is doing
 
 def one_layer_backward(dA, cache):

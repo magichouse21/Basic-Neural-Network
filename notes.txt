@@ -8,6 +8,9 @@ Bias - an increase in the y-axis so that the graph doesn't need to start at the 
 Gradient descent - an algorithm that changes the weights so outputs are what we want
     it requies the entire dataset though and averages the gradient of the cost function after using the entire dataset
 
+    In order to change the weights and outputs we need to know which nodes are responsible for changing our output values the most
+    we do this by finding the derivative of the previous layer and the current layer 
+
 Stochastic Gradient Descent - same as normal Gradient Descent but instead of needing the entire dataset, every time the cost function is 
                               calculated, the parameters (weight and bias) change iteravely every time we get a new cost
 
