@@ -9,12 +9,12 @@ import numpy as np
 
 def initialize_network(input_dim):  #input dimensions
     layers = {}
-    L = input_dim-1
+    L = len(input_dim)-1
     np.random.seed(67)
 
-    for k in range (0,L):   
-        layers['W'+str(k)] = np.random.randn(L,L) * 0.1   #two layers
-        layers['B'+str(k)] = np.zeros(L)
+    for k in range(L):   
+        layers['W'+str(k)] = np.random.randn(input_dim[k+1],input_dim[k]) * 0.1   #two layers
+        layers['B'+str(k)] = np.zeros((input_dim[k],1))
 
     return layers
 
@@ -26,13 +26,13 @@ def sigmoid(z):  #activation function  #2
 
 
 def forward_propogation(inputs, layers): #given the input, how will we find the next layer stuff
-    prev_input = inputs  #we need this to progress through the hidden layers to foward prop until we hit the final output
-    for k in range (0, len(inputs)-1):
-        print(layers['W'+str(k)], prev_input)
-        z = np.dot(layers['W'+str(k)], prev_input) + layers['B'+str(k)]
-        prev_input = relu(z)  #final output of the next neuron and when the loop is over, we will have the output matrix
+    A = inputs #we need this to progress through the hidden layers to foward prop until we hit the final output
+    for k in range(len(layers)//2):
+        Z = layers[f'W{k}'], A + layers[f'B{k}']
+        A = relu(Z)
+  #final output of the next neuron and when the loop is over, we will have the output matrix
 
-    return prev_input
+    return A
 
 def cost(output, actual):  #MSE cuz its super easy to understand
     return np.mean((output - actual)**2)
@@ -43,7 +43,8 @@ def back_prop(inputs, layers):
 
 
 
-net = initialize_network(4)
-print(cost(forward_propogation([123, 234, 345], net), 9)) 
+net = initialize_network([1,4,3,2,1])  #given an array with an int for each layer dimension like [1, 2, 3, 2, 1] where each layer is 1, 2, 3, 2, 1 nodes respec.
+#print(net)
+print(cost(forward_propogation([123], net), 9)) 
 
 
