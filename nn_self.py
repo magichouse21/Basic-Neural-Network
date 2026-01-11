@@ -9,12 +9,12 @@ import numpy as np
 
 def initialize_network(input_dim):  #input dimensions
     layers = {}
-    L = input_dim
+    L = input_dim-1
     np.random.seed(67)
 
-    for k in range (0,L-1):   
-        layers['W'+str(k)] = np.random.randn(L,L) * 0.1   #two layers both 3x3 matrices
-        layers['B'+str(k)] = np.zeros(input_dim)
+    for k in range (0,L):   
+        layers['W'+str(k)] = np.random.randn(L,L) * 0.1   #two layers
+        layers['B'+str(k)] = np.zeros(L)
 
     return layers
 
