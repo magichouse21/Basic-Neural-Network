@@ -24,3 +24,6 @@ Activation Functions
     ReLU (Rectified Linear Unit) - sigmoid(z) = max (0,z)
 
     Tanh (hyperbolic tangent) - sigmoid(z) = smthn fierce
+
+Back Propogation:
+    -we use gradient descent and steps to make the nodes weights and biases larger or smaller
