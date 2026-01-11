@@ -24,18 +24,17 @@ def initialize_network():
 def relu(x):
     return np.maximum(0,x)
 
-def forward_propogation(input, layers): #given the input, how will we find the next layer stuff
-    prev_input = input  #we need this to progress through the hidden layers to foward prop until we hit the final output
-    print(len(layers))
-    for k in range (0, len(input)-1):
+def forward_propogation(inputs, layers): #given the input, how will we find the next layer stuff
+    prev_input = inputs  #we need this to progress through the hidden layers to foward prop until we hit the final output
+    for k in range (0, len(inputs)-1):
         z = np.dot(layers['W'+str(k)], prev_input) + layers['B'+str(k)]
-        a = z 
-        prev_input = relu(a)  #final output of the next neuron and when the loop is over, we will have the output matrix
+        prev_input = relu(z)  #final output of the next neuron and when the loop is over, we will have the output matrix
 
     return prev_input
 
 def cost(output, actual):  #MSE cuz its super easy to understand
-    return (output - actual)**2
+    return np.mean((output - actual)**2)
 
 net = initialize_network()
-print(forward_propogation([123, 234, 345], net))
+print(cost(forward_propogation([123, 234, 345], net), 9)) 
+
