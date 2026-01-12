@@ -50,5 +50,6 @@ def one_layer_backward(dA, cache):
     #the cache holds the previous layer's activation, bias, and weight matrices
     Z = activation_cache    
 
-net = init_params([2,2,2])
-print(forward_prop([123, 234], net))
+net = init_params([1,2,3,2,1])
+print(net)
+print(forward_prop([123], net))
