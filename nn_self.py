@@ -17,12 +17,15 @@ def sigmoid(x):
 def forward_prop(ipt, layers):
     prev = ipt
     L = len(layers)//2
+    caches = []
 
     for k in range (1, L+1): #except for the output which we want
         z = np.dot(layers['W'+str(k)], prev) + layers['B'+str(k)]
-        prev = sigmoid(z)
+        prev, activation_cache = sigmoid(z)
+        cache = ((prev, layers['W'+str(k)], layers['B'+str(k)]), activation_cache)
+        caches.append(cache)
 
-    return prev
+    return prev, caches
 
 #https://medium.com/@anishnama20/understanding-cost-functions-in-machine-learning-types-and-applications-cd7d8cc4b47d  helped me decide
 def cost(ipt, actual): #categorical cross-entropy cuz imma try MNIST
@@ -32,3 +35,11 @@ def cost(ipt, actual): #categorical cross-entropy cuz imma try MNIST
     
 net = initialize_net([3,5,3,2,4])
 print(cost(forward_prop([123, 234, 345], net), 5)) #find sum of 3 numbers, figure out remainder with divisor 17
+
+#gotta learn backprop
+
+def back_prop_once(dA, cache): #cache has values of Z for each layer
+    
+    
+
+    return 0
