@@ -20,7 +20,8 @@ def forward_prop(ipt, layers):
     prev = ipt
     L = len(layers)//2
     caches = []
-
+        #linear cache looks like this: (decimal, weight, bias)
+        #activation looks like (bunch of decimals)
     for k in range (1, L+1): #except for the output which we want
         z = np.dot(layers['W'+str(k)], prev) + layers['B'+str(k)]
         linear_cache = (prev, layers['W'+str(k)], layers['B'+str(k)]) 
@@ -38,12 +39,29 @@ def cost(ipt, actual): #categorical cross-entropy cuz imma try MNIST
     n = len(ipt)
     return -1/n * np.sum(np.sum(actual * np.log(ipt)))
 
+def back_one(dA):
+    m = AL.shape
+
+    return 0
+
 #gotta learn backprop
-def backprop():
+#fout is final output, act is actual answer, caches - all previous stuff
+def backprop(fout, act, caches):  #https://www.geeksforgeeks.org/machine-learning/backpropagation-in-neural-network/
+    grads = {}
+    L = len(caches)
+    m = fout.shape[1]
+    act = act.reshape[fout.shape]
+
+    dact = -(np.divide(fout, act) - np.divide(1 - fout, 1 - act)) #derivative of actual outout
+
+    for l in range (1, L-1, -1):
+        current = caches[l]
+        
+
     return 0
 
 np.random.seed(67)
 input = np.random.randn(784,1)
-net = initialize([784,3,10])
+net = initialize([784, 3, 10])
 forward = forward_prop(input,net)[0]
 print(cost(forward_prop(input,net)[0], [0,1,0,0,0,0,0,0,0,0]))
