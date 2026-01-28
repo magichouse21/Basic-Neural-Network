@@ -144,7 +144,7 @@ def one_hot(y, num_classes):
 # ----------------------------
 # training loop
 # ----------------------------
-def train(X, y, layer_dims, lr=0.1, epochs=1000, print_every=100):
+def train(X, y, layer_dims, lr, epochs, print_every):
     """
     X: (n_x, m)
     y: (m,) integer labels
@@ -173,6 +173,12 @@ def train(X, y, layer_dims, lr=0.1, epochs=1000, print_every=100):
 X_train = X_train.reshape(X_train.shape[0], -1).T
 
 params = train(X_train, y_train, layer_dims=[784, 128, 64, 10], lr=0.1, epochs=1000, print_every=100)
+
+x_test = np.array(x_test)
+if x_test.ndim == 3:
+    x_test = x_test.reshape(x_test.shape[0], -1).T
+elif x_test.ndim == 2 and x_test.shape[0] == x_test.shape[1]:
+    x_test = x_test.T
 
 y_pred = predict(x_test, params)
 test_acc = np.mean(y_pred == y_test)
