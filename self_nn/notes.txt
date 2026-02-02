@@ -27,3 +27,5 @@ Activation Functions
 
 Back Propogation:
     -we use gradient descent and steps to make the nodes weights and biases larger or smaller
+
+Epoch - one complete pass of the entire dataset
